@@ -1,16 +1,21 @@
 // From Odin Project
 
 function getComputerChoice() {
-    computerChoice =  Math.floor(Math.random() * 3);
+    // added const declaration, function can print result
+    const computerChoice =  Math.floor(Math.random() * 3);
     if (computerChoice === 0) {
-        console.log("Rock");
+        return "Rock";
     } else if (computerChoice === 1) {
-        console.log("Paper");
+        return "Paper";
     } else if (computerChoice === 2) {
-        console.log("Scissors");
+        return "Scissors";
     } else {
-        console.log("Insert a valid input");
+        return "Insert a valid input";
     }
 }
 
-getComputerChoice()
+
+
+function playRound(playerSelection, computerSelection) {
+
+}
