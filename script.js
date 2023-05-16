@@ -21,7 +21,7 @@ console.log(`Computer chose... ${getComputerChoice()}`);
 console.log("#########################");
 
 function playRound() {
-    playerSelection = prompt("Choose rock paper scissors");
+    playerSelection = prompt("Choose rock paper scissors").toLowerCase();
     let player = playerSelection.toString();
 
     if (player === getComputerChoice()) {
@@ -47,6 +47,9 @@ function playRound() {
         return "You won! scissors beat papers"
     }
 
+    else {
+        return 'Invalid value; input rock, paper or scissors';
+    }
 }
 
 console.log(playRound());
