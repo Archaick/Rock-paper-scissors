@@ -20,9 +20,9 @@ console.log("#########################");
 console.log(`Computer chose... ${getComputerChoice()}`);
 console.log("#########################");
 
-function playRound(playerSelection) {
-    
-    let player = playerSelection.toLowerCase();
+function playRound() {
+    playerSelection = prompt("Choose rock paper scissors");
+    let player = playerSelection.toString();
 
     if (player === getComputerChoice()) {
         return "Ace! Try again!";
@@ -49,10 +49,4 @@ function playRound(playerSelection) {
 
 }
 
-
-console.log(playRound("rock"));
-console.log("\n");
-console.log(playRound("paper"));
-console.log("\n");
-console.log(playRound("scissors"));
-
+console.log(playRound());
