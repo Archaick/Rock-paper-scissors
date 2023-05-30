@@ -15,6 +15,10 @@
     gap: 3em;
 }
 
+.wrapper h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
 
 .container {
     display: flex;

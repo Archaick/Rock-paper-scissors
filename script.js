@@ -1,4 +1,4 @@
-// Referencing buttons
+// Referencing buttons find within wrapper div container
 const button1 = document.getElementById('rock');
 const button2 = document.getElementById('paper');
 const button3 = document.getElementById('scissors');
@@ -46,6 +46,7 @@ function playRound(playerSelection) {
         console.log(`You won! ${playerSelection} beats ${computerChoice}!`);
     }
 
+    updateResult(); // Call updateResult after updating the score
 }
 
 // Displaying results
@@ -55,8 +56,7 @@ container.appendChild(result);
 
 function updateResult() {
     result.textContent = `Score - Player: ${playerScore}  Computer: ${computerScore}`;
-  }
-// result.textContent = `Score - Player: ${playerScore}  Computer: ${computerScore}`;
+}
 
+// Call updateResult initially to display the initial score
 updateResult();
-
