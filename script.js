@@ -1,54 +1,62 @@
-// From Odin Project
+// Referencing buttons
+const button1 = document.getElementById('rock');
+const button2 = document.getElementById('paper');
+const button3 = document.getElementById('scissors');
 
-// added const declaration, function can print result
-let computerChoice =  Math.floor(Math.random() * 3);
+// Adding event listener to the button on click
+button1.addEventListener('click', function () {
+    playRound('rock');
+});
 
+button2.addEventListener('click', function () {
+    playRound('paper');
+});
 
-function getComputerChoice() {
-    if (computerChoice === 0) {
-        return "rock";
-    } else if (computerChoice === 1) {
-        return "paper";
-    } else if (computerChoice === 2) {
-        return "scissors";
-    } 
+button3.addEventListener('click', function () {
+    playRound('scissors');
+});
+
+let playerScore = 0;
+let computerScore = 0;
+
+function playRound(playerSelection) {
+    console.log(`You choose ${playerSelection}`);
+
+    function getComputerChoice() {
+        const choices = ["rock", "paper", "scissors"];
+        const randomIndex = Math.floor(Math.random() * choices.length);
+        return choices[randomIndex];
+    }
+
+    const computerChoice = getComputerChoice();
+
+    console.log(`Computer chose... ${computerChoice}`);
+
+    if (playerSelection === computerChoice) {
+        console.log("Ace! Try again!");
+    } else if (
+        (playerSelection === "rock" && computerChoice === "paper") ||
+        (playerSelection === "paper" && computerChoice === "scissors") ||
+        (playerSelection === "scissors" && computerChoice === "rock")
+    ) {
+        computerScore++;
+        console.log(`You lost! ${computerChoice} beats ${playerSelection}!`);
+    } else {
+        playerScore++;
+        console.log(`You won! ${playerSelection} beats ${computerChoice}!`);
+    }
+
 }
 
-// Using this variable to validate next function
-console.log("#########################");
-console.log(`Computer chose... ${getComputerChoice()}`);
-console.log("#########################");
+// Displaying results
+const container = document.getElementById('wrapper');
+const result = document.createElement('p');
+container.appendChild(result);
 
-function playRound() {
-    // playerSelection = prompt("Choose rock paper scissors").toLowerCase();
-    let player = playerSelection.toString();
+function updateResult() {
+    result.textContent = `Score - Player: ${playerScore}  Computer: ${computerScore}`;
+  }
+// result.textContent = `Score - Player: ${playerScore}  Computer: ${computerScore}`;
 
-    if (player === getComputerChoice()) {
-        return "Ace! Try again!";
-    } 
-    // player === rock
-    else if (player === "rock" && getComputerChoice() === "paper") {
-        return `Paper beats rocks! You lost!`;
-    } else if (player === "rock" && getComputerChoice() === "scissors") {
-        return `Rocks beat scissors! You won!`;
-    }
-    // player === paper
-    else if (player === "paper" && getComputerChoice() === "rock") {
-        return "Paper beats rock! You Won!";
-    } else if (player === "paper" && getComputerChoice() === "scissors") {
-        return "You lost! scissors beat papers!";
-    }
+updateResult();
 
-    // player === scissors
-    else if (player === "scissors" && getComputerChoice() === "rock") {
-        return "You lost! rock beats scissors!";
-    } else if (player === "scissors" && getComputerChoice() === "paper") {
-        return "You won! scissors beat papers"
-    }
-
-    else {
-        return 'Invalid value; input rock, paper or scissors';
-    }
-}
-
-console.log(playRound());

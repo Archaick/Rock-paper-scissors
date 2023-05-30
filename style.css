@@ -4,31 +4,56 @@
     box-sizing: border-box;
 }
 
+.wrapper {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(72, 72, 72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3em;
+}
+
+
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    width: 100vw;
+    position: relative;
 }
 
 .container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
     border: none;
     cursor: pointer;
     color: white;
     background-color: rgb(54, 54, 54);
     font-size: 1.2em;
     font-weight: 900;
-    width: 182px;
-    height: 92px;
+    width: 186px;
+    height: 82px;
     padding: 2em;
     margin: 1em;
+    transition: all 0.3 ease;
 }
 
 .container button:hover {
     color: rgb(54, 54, 54);
     background-color: rgb(236, 236, 236);
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: 900;
+    transform: scale(1.1);
+}
 
+/* Results after the match */
+
+div.wrapper > p {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: 2em;
+    color: white;
 }
