@@ -18,6 +18,7 @@ button3.addEventListener('click', function () {
 
 let playerScore = 0;
 let computerScore = 0;
+let tie = 0;
 
 function playRound(playerSelection) {
     console.log(`You choose ${playerSelection}`);
@@ -34,6 +35,7 @@ function playRound(playerSelection) {
 
     if (playerSelection === computerChoice) {
         console.log("Ace! Try again!");
+        tie++;
     } else if (
         (playerSelection === "rock" && computerChoice === "paper") ||
         (playerSelection === "paper" && computerChoice === "scissors") ||
@@ -55,7 +57,7 @@ const result = document.createElement('p');
 container.appendChild(result);
 
 function updateResult() {
-    result.textContent = `Score - Player: ${playerScore}  Computer: ${computerScore}`;
+    result.textContent = `Score - Player: ${playerScore}  Computer: ${computerScore} Tie: ${tie}`;
 }
 
 // Call updateResult initially to display the initial score
