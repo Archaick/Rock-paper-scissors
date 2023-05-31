@@ -47,7 +47,10 @@ function playRound(playerSelection) {
         playerScore++;
         console.log(`You won! ${playerSelection} beats ${computerChoice}!`);
     }
-
+    
+    if(playerScore === 5) {
+        alert(`You've won!`);
+    }
     updateResult(); // Call updateResult after updating the score
 }
 
@@ -57,8 +60,10 @@ const result = document.createElement('p');
 container.appendChild(result);
 
 function updateResult() {
-    result.textContent = `Score - Player: ${playerScore}  Computer: ${computerScore} Tie: ${tie}`;
+    result.innerHTML = `Score <br> Player: ${playerScore} Computer: ${computerScore} Tie: ${tie}`;
 }
+
 
 // Call updateResult initially to display the initial score
 updateResult();
+
