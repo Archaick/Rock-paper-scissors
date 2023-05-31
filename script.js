@@ -48,8 +48,17 @@ function playRound(playerSelection) {
         console.log(`You won! ${playerSelection} beats ${computerChoice}!`);
     }
     
-    if(playerScore === 5) {
+    if(playerScore === 3) {
         alert(`You've won!`);
+        location.reload();
+    } 
+    if (computerScore === 3) {
+        alert("You've lost!");
+        location.reload();
+    }
+    if (tie === 3) {
+        alert("It's a tie! Try again!")
+        location.reload();
     }
     updateResult(); // Call updateResult after updating the score
 }
@@ -66,4 +75,3 @@ function updateResult() {
 
 // Call updateResult initially to display the initial score
 updateResult();
-
