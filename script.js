@@ -63,13 +63,14 @@ function playRound(playerSelection) {
     updateResult(); // Call updateResult after updating the score
 }
 
-// Displaying results
+    // Displaying results
 const container = document.getElementById('wrapper');
 const result = document.createElement('p');
 container.appendChild(result);
 
 function updateResult() {
     result.innerHTML = `Score <br> Player: ${playerScore} Computer: ${computerScore} Tie: ${tie}`;
+    result.classList.add('pulse'); // Add pulse class
 }
 
 
