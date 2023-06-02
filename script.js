@@ -21,7 +21,7 @@ let computerScore = 0;
 let tie = 0;
 
 function playRound(playerSelection) {
-    console.log(`You choose ${playerSelection}`);
+    console.log(`You chose ${playerSelection}`);
 
     function getComputerChoice() {
         const choices = ["rock", "paper", "scissors"];
@@ -31,10 +31,17 @@ function playRound(playerSelection) {
 
     const computerChoice = getComputerChoice();
 
-    console.log(`Computer chose... ${computerChoice}`);
+    // Highlighting computer's choice
+    const computerImg = document.querySelector(`#computer-container img`);
+    computerImg.src = `img/${computerChoice}.png`;
 
+    computerImg.classList.add('highlight-animation');
+    setTimeout(() => {
+        computerImg.classList.remove('highlight-animation');
+    }, 1000);
+    
     if (playerSelection === computerChoice) {
-        console.log("Ace! Try again!");
+        console.log("It's a tie! Try again!");
         tie++;
     } else if (
         (playerSelection === "rock" && computerChoice === "paper") ||
@@ -47,21 +54,23 @@ function playRound(playerSelection) {
         playerScore++;
         console.log(`You won! ${playerSelection} beats ${computerChoice}!`);
     }
-    
-    if(playerScore === 3) {
+
+    if (playerScore === 3) {
         alert(`You've won!`);
         location.reload();
-    } 
+    }
     if (computerScore === 3) {
         alert("You've lost!");
         location.reload();
     }
     if (tie === 3) {
-        alert("It's a tie! Try again!")
+        alert("It's a tie! Try again!");
         location.reload();
     }
+    
     updateResult(); // Call updateResult after updating the score
 }
+
 
     // Displaying results
 const container = document.getElementById('wrapper');

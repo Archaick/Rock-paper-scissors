@@ -11,11 +11,12 @@
     background-image: url(img/background.jpg);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 3em;
+    gap: 2em;
 
     &::after {
         content: "";
@@ -31,7 +32,7 @@
 }
 
 .wrapper h1 {
-    padding-top: 36px;
+    padding-top: 30px;
     font-family: 'Courier New', Courier, monospace;
     color: white;
     font-size: 2.6em;
@@ -43,8 +44,16 @@
     font-family: 'Courier New', Courier, monospace;
     color: rgb(225, 225, 225);
     font-size: 1.2em;
-    font-style: italic;
+    font-weight: 900;
     z-index: 1;
+}
+
+.wrapper header p {
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+    font-weight: 900;
+    font-style: italic;
 }
 
 .container {
@@ -62,11 +71,15 @@
     border: none;
     cursor: pointer;
     color: white;
-    width: 180px;
-    height: 164px;
+    width: 108px;
+    height: 84px;
     margin: 1em;
     transition: all 0.3 ease;
+    padding: 3px;
+    border-radius: 50%;
+    overflow: hidden;
 }
+
 
 .container img:hover {
     transform: scale(1.05);
@@ -81,8 +94,7 @@ div.wrapper > p {
     color: white;
     z-index: 1;
     padding: 0.5em;
-    margin-bottom: 36px;
-    border: white 1px solid;
+    margin-bottom: 30px;
     box-shadow: 0 0 10px rgba(223, 223, 223, 0.7);
     text-align: center;
 
@@ -93,35 +105,72 @@ div.wrapper > p {
     animation-direction: alternate;
 }
 
+
 @keyframes pulse {
     from {
       transform: scale(1);
     }
     to {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 }
 
+#computer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 168px;
+    width: 468px;
+    z-index: 1;
+}
+
+#computer-container {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.2em;
+    color: white;
+
+}
+
+#computer-container img {
+    background-size: cover;
+    background-position: center;
+    object-fit: contain;
+    width: 220px;
+    height: 124px;
+    padding: 5px;
+    pointer-events: none;
+}
+
+@keyframes highlight {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 @media (max-width: 768px) {
+    .wrapper {
+        gap: 1em;
+    }
     .wrapper h1 {
         font-size: 1.9em;
     }
 
     .container {
-        flex-direction: column;
-        width: 200px;
-        height: 560px;
+        width: 364px;
+        height: 384px;
     }
 
     .container img {
-        width: 128px;
-        height: 112px;
+        width: 84px;
+        height: 68px;
     }
 
     div.wrapper > p {
         font-size: 1.1em;
-        height: 120px;
-        width: 320px;
+        height: 108px;
+        width: 360px;
         margin-bottom: 64px;
     }
 
