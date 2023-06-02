@@ -1,55 +1,87 @@
-// From Odin Project
+// Referencing buttons find within wrapper div container
+const button1 = document.getElementById('rock');
+const button2 = document.getElementById('paper');
+const button3 = document.getElementById('scissors');
 
-// added const declaration, function can print result
-let computerChoice =  Math.floor(Math.random() * 3);
+// Adding event listener to the button on click
+button1.addEventListener('click', function () {
+    playRound('rock');
+});
 
+button2.addEventListener('click', function () {
+    playRound('paper');
+});
 
+button3.addEventListener('click', function () {
+    playRound('scissors');
+});
 
-function getComputerChoice() {
-    if (computerChoice === 0) {
-        return "rock";
-    } else if (computerChoice === 1) {
-        return "paper";
-    } else if (computerChoice === 2) {
-        return "scissors";
-    } 
+let playerScore = 0;
+let computerScore = 0;
+let tie = 0;
+
+function playRound(playerSelection) {
+    console.log(`You chose ${playerSelection}`);
+
+    function getComputerChoice() {
+        const choices = ["rock", "paper", "scissors"];
+        const randomIndex = Math.floor(Math.random() * choices.length);
+        return choices[randomIndex];
+    }
+
+    const computerChoice = getComputerChoice();
+
+    // Highlighting computer's choice
+    const computerImg = document.querySelector(`#computer-container img`);
+    computerImg.src = `img/${computerChoice}.png`;
+
+    computerImg.classList.add('highlight-animation');
+    setTimeout(() => {
+        computerImg.classList.remove('highlight-animation');
+    }, 1000);
+    
+    if (playerSelection === computerChoice) {
+        console.log("It's a tie! Try again!");
+        tie++;
+    } else if (
+        (playerSelection === "rock" && computerChoice === "paper") ||
+        (playerSelection === "paper" && computerChoice === "scissors") ||
+        (playerSelection === "scissors" && computerChoice === "rock")
+    ) {
+        computerScore++;
+        console.log(`You lost! ${computerChoice} beats ${playerSelection}!`);
+    } else {
+        playerScore++;
+        console.log(`You won! ${playerSelection} beats ${computerChoice}!`);
+    }
+
+    if (playerScore === 3) {
+        alert(`You've won!`);
+        location.reload();
+    }
+    if (computerScore === 3) {
+        alert("You've lost!");
+        location.reload();
+    }
+    if (tie === 3) {
+        alert("It's a tie! Try again!");
+        location.reload();
+    }
+    
+    updateResult(); // Call updateResult after updating the score
 }
 
-// Using this variable to validate next function
-console.log("#########################");
-console.log(`Computer chose... ${getComputerChoice()}`);
-console.log("#########################");
 
-function playRound() {
-    playerSelection = prompt("Choose rock paper scissors").toLowerCase();
-    let player = playerSelection.toString();
+    // Displaying results
+const container = document.getElementById('wrapper');
+const result = document.createElement('p');
+container.appendChild(result);
 
-    if (player === getComputerChoice()) {
-        return "Ace! Try again!";
-    } 
-    // player === rock
-    else if (player === "rock" && getComputerChoice() === "paper") {
-        return `Paper beats rocks! You lost!`;
-    } else if (player === "rock" && getComputerChoice() === "scissors") {
-        return `Rocks beat scissors! You won!`;
-    }
-    // player === paper
-    else if (player === "paper" && getComputerChoice() === "rock") {
-        return "Paper beats rock! You Won!";
-    } else if (player === "paper" && getComputerChoice() === "scissors") {
-        return "You lost! scissors beat papers!";
-    }
-
-    // player === scissors
-    else if (player === "scissors" && getComputerChoice() === "rock") {
-        return "You lost! rock beats scissors!";
-    } else if (player === "scissors" && getComputerChoice() === "paper") {
-        return "You won! scissors beat papers"
-    }
-
-    else {
-        return 'Invalid value; input rock, paper or scissors';
-    }
+function updateResult() {
+    result.innerHTML = `Score <br> Player: ${playerScore} Computer: ${computerScore} Tie: ${tie}`;
+    result.classList.add('pulse'); // Add pulse class
 }
 
-console.log(playRound());
+
+// Call updateResult initially to display the initial score
+updateResult();
