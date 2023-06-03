@@ -72,7 +72,7 @@ function playRound(playerSelection) {
 }
 
 
-    // Displaying results
+// Displaying results
 const container = document.getElementById('wrapper');
 const result = document.createElement('p');
 container.appendChild(result);
