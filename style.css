@@ -169,33 +169,38 @@ div.wrapper > p {
     font-weight: 900;
     font-size: 1.2em;
     color: white;
-
 }
 
 #computer-container img {
     background-size: cover;
     background-position: center;
     object-fit: contain;
-    width: 270px;
+    width: 240px;
     height: 124px;
     padding: 5px;
     pointer-events: none;
+    border-radius: initial;
 }
 
+/* Shaking animation */
 @keyframes computerChoiceAnimation {
-    0% {
-      transform: scale(1);
+    0%, 100% {
+      transform: translateX(0);
     }
-    50% {
-      transform: scale(1.2);
+    10%, 30%, 50%, 70%, 90% {
+      transform: translateX(-10px);
     }
-    100% {
-      transform: scale(1);
+    20%, 40%, 60%, 80% {
+      transform: translateX(10px);
     }
-}
+  }
   
 .container.appearance img {
-    animation: computerChoiceAnimation 1s;
+    animation: computerChoiceAnimation 1.5s;
+}
+
+#computer-selection {
+    filter: drop-shadow(2px 2px 4px rgba(87, 125, 51, 0.5));
 }
 
 @media (max-width: 768px) {

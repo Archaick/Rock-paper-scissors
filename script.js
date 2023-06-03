@@ -31,6 +31,8 @@ function playRound(playerSelection) {
 
     const computerChoice = getComputerChoice();
 
+    /* Computer selection animation */
+    
     // Highlighting computer's choice
     const computerContainer = document.getElementById('computer-container');
     const computerImg = computerContainer.querySelector('img');
@@ -54,6 +56,7 @@ function playRound(playerSelection) {
         computerImg.classList.remove('highlight-animation');
     }, 1000);
     
+    // Logic and score begins here
     if (playerSelection === computerChoice) {
         console.log("It's a tie! Try again!");
         tie++;
