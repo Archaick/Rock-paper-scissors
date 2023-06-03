@@ -32,8 +32,22 @@ function playRound(playerSelection) {
     const computerChoice = getComputerChoice();
 
     // Highlighting computer's choice
-    const computerImg = document.querySelector(`#computer-container img`);
+    const computerContainer = document.getElementById('computer-container');
+    const computerImg = computerContainer.querySelector('img');
     computerImg.src = `img/${computerChoice}.png`;
+    // Add animation class to the container
+    computerContainer.classList.add('appearance');
+
+    // Force reflow by accessing the computed style
+    computerContainer.offsetWidth;
+
+    // Remove animation class to reset the animation
+    computerContainer.classList.remove('appearance');
+
+    // Add animation class again after a short delay
+    setTimeout(() => {
+    computerContainer.classList.add('appearance');
+    }, 10);
 
     computerImg.classList.add('highlight-animation');
     setTimeout(() => {
@@ -78,10 +92,9 @@ const result = document.createElement('p');
 container.appendChild(result);
 
 function updateResult() {
-    result.innerHTML = `Score <br> Player: ${playerScore} Computer: ${computerScore} Tie: ${tie}`;
+    result.textContent = `Player: ${playerScore} Computer: ${computerScore} Tie: ${tie}`;
     result.classList.add('pulse'); // Add pulse class
 }
-
 
 // Call updateResult initially to display the initial score
 updateResult();
