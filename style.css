@@ -38,6 +38,17 @@
     font-size: 2.6em;
     font-weight: 900;
     z-index: 1;
+    position: relative;
+    animation: fall 2s ease-out;
+}
+
+@keyframes fall {
+    0% {
+        top: -100px;
+    }
+    100% {
+        top: 0;
+    }
 }
 
 .wrapper h2 {
@@ -61,6 +72,37 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    z-index: 1;    
+}
+
+.slide-left {
+    animation: slide;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+
+.slide-right {
+    animation-name: slide-right;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes slide-right {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
 }
 
 .container img {
@@ -120,7 +162,7 @@ div.wrapper > p {
     justify-content: center;
     align-items: center;
     height: 168px;
-    width: 468px;
+    width: 622px;
     z-index: 1;
 }
 
@@ -151,28 +193,39 @@ div.wrapper > p {
 
 @media (max-width: 768px) {
     .wrapper {
-        gap: 1em;
+        gap: 16px;
     }
     .wrapper h1 {
-        font-size: 1.9em;
+        margin-top: 42px;
+        font-size: 1.5em;
     }
 
     .container {
-        width: 364px;
-        height: 384px;
+        width: 340px;
+        height: 364px;
     }
 
     .container img {
         width: 84px;
-        height: 68px;
+        height: 68px
     }
 
     div.wrapper > p {
         font-size: 1.1em;
         height: 108px;
         width: 360px;
-        margin-bottom: 64px;
+        margin-bottom: 82px;
     }
 
+    #computer-container {
+        height: 140px;
+        width: 280px;
+        margin-bottom: 82px;
+    }
+
+    #computer-container img {
+        width: 120px;
+        height: 80px;
+    }
     
 }
